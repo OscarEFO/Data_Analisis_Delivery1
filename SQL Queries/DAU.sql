@@ -1,0 +1,6 @@
+SELECT 
+DATE(StartTime) AS date,
+COUNT(DISTINCT PlayerID) AS DAU
+FROM Sessions
+GROUP BY DATE(StartTime)
+ORDER BY date;
