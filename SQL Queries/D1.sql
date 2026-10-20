@@ -1,5 +1,5 @@
 SELECT
-DATE(p.CreatTime) AS creat_date,
+DATE(p.CreateDate) AS creat_date,
 ROUND(
 COUNT(DISTINCT s.PlayerID)
 / COUNT(DISTINCT p.PlayerID) * 100, 2  
@@ -7,6 +7,6 @@ COUNT(DISTINCT s.PlayerID)
 FROM Players p
 LEFT JOIN Sessions s
 ON p.PlayerID = s.PlayerID
-AND DATE(s.StartTime) = DATE(p.CreatTime + INTERVAL 1 DAY)
-GROUP BY DATE(p.CreatTime)
+AND DATE(s.StartTime) = DATE(p.CreateDate + INTERVAL 1 DAY)
+GROUP BY DATE(p.CreateDate)
 ORDER BY creat_date;

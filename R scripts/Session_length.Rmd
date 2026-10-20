@@ -1,0 +1,36 @@
+---
+title: "Average Session Length (Hours)"
+date: "19/10/2026"
+output: html_document
+---
+
+This report analyzes how long users stay active in each session during the year.
+
+```{r}
+# Load the dataset
+avg_length <- read.csv("avg_SessionsLength_no_more_than_24h_.csv")
+
+# Load libraries
+library(ggplot2)
+
+# Convert columns
+avg_length$date <- as.Date(avg_length$date, format = "%Y-%m-%d")
+avg_length$avg_session_minutes <- as.numeric(avg_length$avg_session_minutes)
+avg_length$avg_session_hours <- as.numeric(avg_length$avg_session_hours)
+
+# Clean data
+avg_length <- avg_length[is.finite(avg_length$avg_session_hours), ]
+
+# Plot with trend line
+ggplot(avg_length, aes(x = date, y = avg_session_hours)) +
+  geom_line(color = "blue", linewidth = 1) +
+  geom_point(color = "darkred", size = 2) +
+  geom_smooth(method = "loess", se = FALSE, color = "green", linewidth = 1.2) +
+  labs(
+    title = "Average Session Length (Hours) Over Time",
+    x = "Date",
+    y = "Average Session Length (Hours)"
+  ) +
+  theme_minimal()
+```
+

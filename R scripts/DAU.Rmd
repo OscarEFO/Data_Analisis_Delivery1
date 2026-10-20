@@ -1,0 +1,31 @@
+---
+title: "DAU"
+date: "19/10/2026"
+output: html_document
+---
+
+# Daily Active Users (DAU) Analysis
+
+This report analyzes the Daily Active Users (DAU) over time and includes a trend line.
+
+```{r}
+# Load ggplot2
+library(ggplot2)
+
+# Load the data
+DAU <- read.csv("DAU.csv")
+
+# Convert date column to Date format
+DAU$date <- as.Date(DAU$date)
+
+# Plot DAU with a trend line
+ggplot(DAU, aes(x = date, y = DAU)) +
+  geom_line(color = "blue", linewidth = 1) +
+  geom_point(color = "red", size = 2) +
+  geom_smooth(method = "lm", se = FALSE, color = "green", linewidth = 1.2) +
+  labs(title = "Daily Active Users (DAU) Over Time",
+       x = "Date",
+       y = "Daily Active Users") +
+  theme_minimal()
+```
+

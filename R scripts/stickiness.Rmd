@@ -1,0 +1,25 @@
+---
+output: html_document
+---
+
+```{r}
+library(readr)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+stickiness_data <- read_csv("STICKNESS.csv")
+```
+
+```{r}
+stickiness_data <- stickiness_data %>%
+  mutate(month = factor(month, levels = unique(month)))
+
+ggplot(stickiness_data, aes(x = month, y = Stickiness_percent, group = 1)) +
+  geom_line(color = "#0073C2", size = 1.2) +
+  geom_point(color = "#0073C2", size = 3) +
+  labs(title = "Monthly Stickiness (DAU/MAU) Trend - 2022") +
+  theme_minimal()
+```
+

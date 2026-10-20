@@ -1,0 +1,30 @@
+---
+title: "Sessions by Age Group"
+date: "19-10-2026"
+output: html_document
+---
+
+This report analyzes how frequently users of different age groups engage with the platform, measured by **average sessions per player**.
+
+```{r}
+# Load the dataset
+sessions_age <- read.csv("session_regarding_age.csv")
+
+# Load libraries
+library(ggplot2)
+
+# Convert any necessary columns to numeric
+sessions_age$avg_sessions_per_player <- as.numeric(sessions_age$avg_sessions_per_player)
+
+# Plot average sessions per player by age group
+ggplot(sessions_age, aes(x = age_group, y = avg_sessions_per_player)) +
+  geom_bar(stat = "identity", fill = "skyblue", color = "black") +
+  geom_text(aes(label = round(avg_sessions_per_player, 2)), vjust = -0.5, size = 3.5) +
+  labs(
+    title = "Average Sessions per Player by Age Group",
+    x = "Age Group",
+    y = "Average Sessions per Player"
+  ) +
+  theme_minimal()
+```
+

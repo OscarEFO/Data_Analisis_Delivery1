@@ -1,0 +1,30 @@
+---
+title: "Nsessios_pm"
+date: "19/10/2026"
+output: html_document
+---
+
+# Number of Sessions per Month
+
+This report shows how the total number of sessions changes each month.
+
+```{r}
+# Load your CSV file
+sessions <- read.csv("NumberSessionMonth.csv")
+
+# Load ggplot2
+library(ggplot2)
+
+# Convert year and month to a full date (add "-01" as the day)
+sessions$Month <- as.Date(paste0(sessions$Month, "-01"), format = "%Y-%m-%d")
+
+# Basic line plot with trend line
+ggplot(sessions, aes(x = Month, y = TotalSessions)) +
+  geom_line(color = "blue", linewidth = 1) +
+  geom_point(color = "darkred", size = 2) +
+  labs(title = "Number of Sessions per Month",
+       x = "Month",
+       y = "Total Sessions") +
+  theme_minimal()
+```
+

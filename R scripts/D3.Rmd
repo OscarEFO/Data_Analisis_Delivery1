@@ -1,0 +1,32 @@
+---
+title: "D3 Retention Graph Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(ggplot2)
+```
+
+## Load Data (D3)
+
+```{r}
+d3 <- read_csv("D3.csv")
+```
+
+```{r}
+d3$creat_date <- as.Date(d3$creat_date)
+```
+
+## Plot Graph (D3)
+
+```{r}
+ggplot(d3, aes(x = creat_date, y = D3_Retention_percent)) +
+  geom_line() +
+  labs(
+    title = "D3 Retention Over Time",
+    x = "Date",
+    y = "Retention (%)"
+  )
+```
+

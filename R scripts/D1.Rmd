@@ -1,0 +1,32 @@
+---
+title: "D1 Retention Graph Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(ggplot2)
+```
+
+## Load Data
+
+```{r}
+data <- read_csv("d1.csv")
+```
+
+```{r}
+data$creat_date <- as.Date(data$creat_date)
+```
+
+## Plot Graph
+
+```{r}
+ggplot(data, aes(x = creat_date, y = D1_Retention_percent)) +
+  geom_line() +
+  labs(
+    title = "D1 Retention Over Time",
+    x = "Date",
+    y = "Retention (%)"
+  )
+```
+

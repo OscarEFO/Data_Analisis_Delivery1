@@ -1,0 +1,24 @@
+---
+title: "KPIs by Gender"
+output: html_document
+---
+
+# Sessions and Revenue by Gender
+
+This report compares the sessions and revenue of male and female players.
+
+```{r}
+library(ggplot2)
+
+gender <- read.csv("KPIsperGender.csv")
+
+ggplot(gender, aes(x = Gender, y = SessionsPerPlayer)) +
+  geom_col(fill = "blue") +
+  labs(title = "Sessions per Player by Gender", x = "Gender", y = "Sessions per Player") +
+  theme_minimal()
+
+ggplot(gender, aes(x = Gender, y = ARPU)) +
+  geom_col(fill = "blue") +
+  labs(title = "ARPU by Gender", x = "Gender", y = "ARPU") +
+  theme_minimal()
+```

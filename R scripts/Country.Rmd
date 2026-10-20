@@ -1,0 +1,26 @@
+---
+title: "Revenue by Country"
+output: html_document
+---
+
+# Monetisation by Country
+
+This report compares the total revenue and the number of paying users of each country.
+
+```{r}
+library(ggplot2)
+
+country <- read.csv("RevenueperCountry.csv")
+
+ggplot(country, aes(x = Country, y = TotalRevenue)) +
+  geom_col(fill = "blue") +
+  labs(title = "Total Revenue by Country", x = "Country", y = "Total Revenue") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+ggplot(country, aes(x = Country, y = PayingUsers)) +
+  geom_col(fill = "blue") +
+  labs(title = "Paying Users by Country", x = "Country", y = "Paying Users") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```

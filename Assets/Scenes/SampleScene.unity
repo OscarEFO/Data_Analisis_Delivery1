@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 445130836}
   - component: {fileID: 445130835}
+  - component: {fileID: 445130837}
   m_Layer: 0
   m_Name: Simulator
   m_TagString: Untagged
@@ -155,6 +156,19 @@ MonoBehaviour:
   MaxPlayers: 100
   BuyProbability: 0.1
   namegen: {fileID: 1280703613}
+--- !u!114 &445130837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445130834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5398dcf0a28e45f4ae36be2f05c0beb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverURL: https://citmalumnes.upc.es/~oscaref1/AnalyticsTest.php
 --- !u!4 &445130836
 Transform:
   m_ObjectHideFlags: 0

@@ -1,0 +1,30 @@
+---
+title: "MAU"
+date: "19/10/2026"
+output: html_document
+---
+
+# Monthly Active Users (MAU) Analysis
+
+This report analyzes the Monthly Active Users (MAU) over time and includes a trend line.
+
+```{r}
+# Load the data
+MAU <- read.csv("MAU.csv")
+
+# Load ggplot2
+library(ggplot2)
+
+# Convert month to Date format
+MAU$month <- as.Date(paste0(MAU$month, "-01"))
+
+# Basic line plot with trend line
+ggplot(MAU, aes(x = month, y = MAU)) +
+  geom_line(color = "blue", linewidth = 1) +
+  geom_point(color = "darkred", size = 2) +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  labs(title = "Monthly Active Users (MAU) Over Time",
+       x = "Month", y = "Monthly Active Users") +
+  theme_minimal()
+```
+

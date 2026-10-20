@@ -1,0 +1,26 @@
+---
+title: "ARPU and ARPPU"
+output: html_document
+---
+
+# ARPU and ARPPU per Month
+
+This report shows the average revenue per user and per paying user each month.
+
+```{r}
+library(ggplot2)
+
+arpu <- read.csv("ARPUandARPPUperMonth.csv")
+arpu$Month <- as.Date(paste0(arpu$Month, "-01"))
+
+arpu_long <- rbind(
+  data.frame(Month = arpu$Month, Metric = "ARPU",  Value = arpu$ARPU),
+  data.frame(Month = arpu$Month, Metric = "ARPPU", Value = arpu$ARPPU)
+)
+
+ggplot(arpu_long, aes(x = Month, y = Value, color = Metric)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  labs(title = "ARPU and ARPPU per Month", x = "Month", y = "Value") +
+  theme_minimal()
+```

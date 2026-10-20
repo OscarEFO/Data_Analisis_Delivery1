@@ -1,0 +1,32 @@
+---
+title: "D7 Retention Graph Report"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(ggplot2)
+```
+
+## Load Data (D7)
+
+```{r}
+d7 <- read_csv("D7.csv")
+```
+
+```{r}
+d7$creat_date <- as.Date(d7$creat_date)
+```
+
+## Plot Graph (D7)
+
+```{r}
+ggplot(d7, aes(x = creat_date, y = D7_Retention_percent)) +
+  geom_line() +
+  labs(
+    title = "D7 Retention Over Time",
+    x = "Date",
+    y = "Retention (%)"
+  )
+```
+
