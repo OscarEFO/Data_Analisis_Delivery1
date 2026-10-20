@@ -10,7 +10,7 @@ This report shows the average revenue per user and per paying user each month.
 ```{r}
 library(ggplot2)
 
-arpu <- read.csv("ARPUandARPPUperMonth.csv")
+arpu <- read.csv("ARPUandARPPUperMonth.csv", na.strings = c("NULL", "NA"))
 arpu$Month <- as.Date(paste0(arpu$Month, "-01"))
 
 arpu_long <- rbind(

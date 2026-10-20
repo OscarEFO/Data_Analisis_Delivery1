@@ -1,5 +1,5 @@
 ---
-title: "Average Session Length (Hours)"
+title: "Average Session Length (Minutes)"
 date: "19/10/2026"
 output: html_document
 ---
@@ -22,14 +22,14 @@ avg_length$avg_session_hours <- as.numeric(avg_length$avg_session_hours)
 avg_length <- avg_length[is.finite(avg_length$avg_session_hours), ]
 
 # Plot with trend line
-ggplot(avg_length, aes(x = date, y = avg_session_hours)) +
+ggplot(avg_length, aes(x = date, y = avg_session_minutes)) +
   geom_line(color = "blue", linewidth = 1) +
   geom_point(color = "darkred", size = 2) +
   geom_smooth(method = "loess", se = FALSE, color = "green", linewidth = 1.2) +
   labs(
-    title = "Average Session Length (Hours) Over Time",
+    title = "Average Session Length (Minutes) Over Time",
     x = "Date",
-    y = "Average Session Length (Hours)"
+    y = "Average Session Length (Minutes)"
   ) +
   theme_minimal()
 ```

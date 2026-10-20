@@ -9,4 +9,4 @@ FROM Players pl
 LEFT JOIN Sessions s  ON s.PlayerID = pl.PlayerID
 LEFT JOIN Purchases p ON p.SessionID = s.SessionID
 LEFT JOIN Items i     ON i.ItemID = p.ItemID
-GROUP BY Gender;
+GROUP BY CASE WHEN pl.Gender < 0.5 THEN 'M' ELSE 'F' END;
